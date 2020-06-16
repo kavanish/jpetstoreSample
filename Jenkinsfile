@@ -76,15 +76,20 @@ pipeline {
 //		}
 //		}
 //	}
-	stage('Execute Maven') {
-		steps {
-		   script {
-		
-		curl https://artifactory.platformdxc-mg.com/artifactory/lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/maven-jpetstore-maven-6.0.2-20200615.123226-2.war --output /var/lib/jenkins/workspace/artifact-deployment-artifactory/target/maven-jpetstore-maven-6.0.2-SNAPSHOT.war
-			}
-		}
-		
-	}
+        stage('Build-Image') {
+            steps {
+                echo '..........................Building Image..........................'
+
+                //In below line I am getting Output
+                //sh 'output=`curl https://some-host/some-service/getApi?apikey=someKey`;echo $output;'
+
+                script {
+                    //I want to get the same response here
+                    def response = sh(script: 'curl https://artifactory.platformdxc-mg.com/artifactory/lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/maven-jpetstore-maven-6.0.2-20200615.123226-2.war', returnStdout: true)
+                    echo '=========================Response===================' + response
+                }
+            }
+        }
 	//stage('Example') {
           //  steps {
            //     echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
