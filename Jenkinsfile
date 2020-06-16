@@ -76,19 +76,23 @@ pipeline {
 //		}
 //		}
 //	}
-        stage('Build-Image') {
-            steps {
-                echo '..........................Building Image..........................'
-
-                //In below line I am getting Output
-                //sh 'output=`curl https://some-host/some-service/getApi?apikey=someKey`;echo $output;'
-
-                script {
-                    //I want to get the same response here
-			def response = sh(script: 'curl $server/lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/maven-jpetstore-maven-6.0.2-20200616.154713-4.war', returnStdout: true)
-                    echo '=========================Response===================' + response
-                }
-            }
-        }
+	    
+        stage("Download Artifacts"){
+              File folder = new File(downloadArtifactsPath)
+              FileUtils.cleanDirectory(folder)
+        
+              def downloadSpec = """{
+                 "files": [
+                  {
+                      "pattern": "internal-repo/folderName/subFolder/API-${env.BUILD_NUMBER}.zip",
+                      "target": "${downloadArtifactsPath}/",
+                      "explode":"true",
+                      "flat": "true"
+                    }
+                 ]
+                }"""
+             def buildInfo = server.download(downloadSpec)
+              server.publishBuildInfo buildInfo
+          }
 }
 }
