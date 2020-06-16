@@ -85,7 +85,7 @@ pipeline {
 
                 script {
                     //I want to get the same response here
-			def response = sh(script: 'curl ${server}/lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/maven-jpetstore-maven-6.0.2-20200616.154713-4.war', returnStdout: true)
+			def response = sh(script: 'curl $server/lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/maven-jpetstore-maven-6.0.2-20200616.154713-4.war', returnStdout: true)
                     echo '=========================Response===================' + response
                 }
             }
