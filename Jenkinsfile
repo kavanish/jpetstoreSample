@@ -80,7 +80,7 @@ pipeline {
 		steps {
 		   script {
 		
-		curl https://artifactory.platformdxc-mg.com/artifactory/lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/ maven-jpetstore-maven-6.0.2-20200615.123226-2.war --output /var/lib/jenkins/workspace/ artifact-deployment-artifactory/target/maven-jpetstore-maven-6.0.2-SNAPSHOT.war
+		curl https://artifactory.platformdxc-mg.com/artifactory/lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/maven-jpetstore-maven-6.0.2-20200615.123226-2.war --output /var/lib/jenkins/workspace/artifact-deployment-artifactory/target/maven-jpetstore-maven-6.0.2-SNAPSHOT.war
 			}
 		}
 		
