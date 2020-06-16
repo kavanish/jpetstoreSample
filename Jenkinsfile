@@ -43,7 +43,7 @@ pipeline {
 		
 			rtMaven.deployer releaseRepo: 'lma-maven', snapshotRepo: 'lma-maven', server: server //Defining where the build artifacts should be deployed to
 			
-			rtMaven.resolver releaseRepo:'lma-maven', snapshotRepo: 'lma-maven', server: server //Defining where Maven Build should download its dependencies from
+			//rtMaven.resolver releaseRepo:'lma-maven', snapshotRepo: 'lma-maven', server: server //Defining where Maven Build should download its dependencies from
 			
 			rtMaven.deployer.artifactDeploymentPatterns.addExclude("pom.xml") //Exclude artifacts from being deployed
 			
