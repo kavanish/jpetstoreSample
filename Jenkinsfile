@@ -41,9 +41,9 @@ pipeline {
 		script {
 			rtMaven.tool = 'Apache Maven 3.3.9' //Maven tool name specified in Jenkins configuration
 		
-			rtMaven.deployer releaseRepo: 'lma-maven', snapshotRepo: 'lma-maven', server: 'https://artifactory.platformdxc-mg.com/artifactory' //Defining where the build artifacts should be deployed to
+			rtMaven.deployer releaseRepo: 'lma-maven', snapshotRepo: 'lma-maven', server: server //Defining where the build artifacts should be deployed to
 			
-			rtMaven.resolver releaseRepo:'lma-maven', snapshotRepo: 'lma-maven', server: 'https://artifactory.platformdxc-mg.com/artifactory' //Defining where Maven Build should download its dependencies from
+			rtMaven.resolver releaseRepo:'lma-maven', snapshotRepo: 'lma-maven', server: server //Defining where Maven Build should download its dependencies from
 			
 			rtMaven.deployer.artifactDeploymentPatterns.addExclude("pom.xml") //Exclude artifacts from being deployed
 			
