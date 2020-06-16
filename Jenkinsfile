@@ -16,13 +16,6 @@ pipeline {
                 }
             }
         }
-        stage ('Compile Stage') {
-            steps {
-                withMaven(maven : 'LocalMaven') {
-                    sh 'mvn clean compile'
-                }
-            }
-        }
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'LocalMaven') {
