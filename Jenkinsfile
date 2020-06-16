@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage('Clone sources'){
             steps {
-                git url: 'https://github.com/aknits081/jpetstore'
+                git url: 'https://github.com/aknits081/jpetstore.git'
             }
         }
 
