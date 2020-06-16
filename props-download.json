@@ -1,7 +1,7 @@
 {
  "files": [
   {
-      "pattern": "libs-snapshot-local/*(Pipeline).zip",
+      "pattern": "/lma-maven/*(Pipeline).zip",
       "target": "/var/lib/jenkins/workspace/artifact-deployment-artifactory/target/{1}/",
       "props": "p1=v1;p2=v2"
     }
