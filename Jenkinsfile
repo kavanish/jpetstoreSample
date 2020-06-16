@@ -1,18 +1,34 @@
 pipeline {
     agent any
-    
+
     stages {
-        stage {
-            tools {
-                jdk "java-1.8.0"
-                maven "Maven 3.6.0"
+        stage ('Compile Stage') {
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn clean compile'
+                }
             }
         }
-        stage ('Execute Maven') {
-            script {
-                rtMaven.run pom: 'pom.xml', goals: 'clean install'  
-            } 
+        stage ('Testing Stage') {
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn test'
+                }
+            }
         }
-    
+        stage ('Compile Stage') {
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn deploy'
+                }
+            }
+        }
     }
 }
