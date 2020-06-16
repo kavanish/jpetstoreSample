@@ -79,8 +79,7 @@ pipeline {
 	stage('fetch build number') {
 		steps {
 		   script {
-		
-		echo "Running ${env.BUILD_NUMBER}"
+			echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}" 
 			}
 		}
 		
