@@ -6,7 +6,7 @@ def server = Artifactory.server 'jenkins-artifactory-server'
 //Create Artifactory Maven Build instance
 def rtMaven = Artifactory.newMavenBuild()
 
-def buildInfo
+//def buildInfo
 
 pipeline {
     agent any
@@ -68,13 +68,22 @@ pipeline {
 		
 	}
 
-	stage('Publish build info') {
+//	stage('Publish build info') {
+//		steps {
+//		  script {
+//
+//		server.publishBuildInfo buildInfo
+//		}
+//		}
+//	}
+	stage('fetch build number') {
 		steps {
-		  script {
-
-		server.publishBuildInfo buildInfo
+		   script {
+		
+		echo "Running ${env.BUILD_NUMBER}"
+			}
 		}
-		}
+		
 	}
 }
 }
