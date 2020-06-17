@@ -2,8 +2,9 @@
  "files": [
   {
       "pattern": "lma-maven/maven-org/mybatis/maven-jpetstore/maven-6.0.2-SNAPSHOT/",
-      "target": "/var/lib/jenkins/workspace/artifact-deployment-artifactory/target/{1}/",
-      "props": "p1=v1;p2=v2"
+      "sortBy": ["created"],
+      "limit": 3,
+      "target": "/var/lib/jenkins/workspace/artifact-deployment-artifactory/target/"
     }
  ]
 }
